@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from utils.db import JobListing, engine, SessionLocal
 
 def add_sample_job_listings():
-    # Utwórz przykładowe oferty pracy
+    # Create sample job offers
     sample_jobs = [
         JobListing(
         title="Junior Python Developer",
@@ -26,14 +26,11 @@ def add_sample_job_listings():
         ), 
         ]
 
-    # Otwarcie sesji
+    # Save job listings 
     with Session(engine) as session:
-        # Dodaj oferty pracy do sesji
         session.add_all(sample_jobs)
-        # Zatwierdź zmiany w bazie danych
         session.commit()
 
     print("Sample job listings have been added successfully!")
 
-# Wywołaj funkcję, aby dodać przykładowe oferty pracy
 
