@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferty Pracy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Witaj w aplikacji rekrutacyjnej!</h1>
+
+    <h2>Lista dostępnych ofert pracy:</h2>
+    <ul>
+        {% for job in jobs %}
+            <li>
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description[:150] }}...</p>
+                <a href="{{ url_for('description', job_id=job.id) }}">Czytaj więcej</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prześlij swoje CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Prześlij swoje CV na ofertę: {{ job_title }}</h1>
+    
+    <form action="{{ url_for('upload', job_id=job_id) }}" method="POST" enctype="multipart/form-data">
+        <label for="cv">Wybierz plik CV (PDF):</label>
+        <input type="file" name="file" id="cv" accept=".pdf" required>  <!-- Change 'cv' to 'file' -->
+        
+        <!-- Optional: Add hidden job_id field if it's not passed in the URL -->
+        <input type="hidden" name="job_id" value="{{ job_id }}">
+        
+        <button type="submit">Wyślij CV</button>
+    </form>
+    
+    <a href="{{ url_for('description', job_id=job_id) }}">Powrót do szczegółów oferty</a>
+</body>
+</html>
